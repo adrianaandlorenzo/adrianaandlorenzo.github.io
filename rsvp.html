@@ -9,19 +9,15 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --red: #8b0000;
-      --red-bright: #aa0000;
-      --red-bg: #7a0000;
-      --red-light: #c0392b;
+      --red: #801423;
       --cream: #f5e8e0;
     }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      background: var(--red-bg);
+      background: var(--red) url("images/heart_check.jpg") center center / cover no-repeat fixed;
       color: var(--cream);
-      overflow-x: hidden;
       min-height: 100vh;
     }
 
@@ -33,7 +29,7 @@
       justify-content: center;
       gap: 2.5rem;
       padding: 1.2rem 2rem;
-      background: rgba(122, 0, 0, 0.88);
+      background: rgba(128, 20, 35, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -49,36 +45,7 @@
     }
     nav a:hover, nav a.active { color: var(--cream); }
 
-    /* FULL BG */
-    .full-bg {
-      position: fixed;
-      inset: 0;
-      background: url('images/page-5.jpg') center center / cover no-repeat;
-      opacity: 0.18;
-      z-index: 0;
-    }
-
-    /* GRID OVERLAY — tictactoe vibe */
-    .grid-lines {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .grid-lines::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to right, rgba(170,0,0,0.3) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(170,0,0,0.3) 1px, transparent 1px);
-      background-size: 33.33% 33.33%;
-    }
-
-    /* CONTENT */
     .page {
-      position: relative;
-      z-index: 2;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -100,11 +67,11 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-size: clamp(5rem, 18vw, 12rem);
-      color: var(--red-bright);
+      color: var(--cream);
       letter-spacing: 0.08em;
       line-height: 1;
       margin-bottom: 3rem;
-      opacity: 0.6;
+      opacity: 0.25;
       text-align: center;
     }
 
@@ -124,17 +91,13 @@
       color: rgba(245, 232, 224, 0.85);
       margin-bottom: 2.5rem;
     }
-
-    .card p strong {
-      color: var(--cream);
-      font-weight: 400;
-    }
+    .card p strong { color: var(--cream); font-weight: 400; }
 
     .rsvp-btn {
       display: inline-block;
       padding: 1rem 3rem;
       background: var(--cream);
-      color: var(--red-bg);
+      color: var(--red);
       text-decoration: none;
       font-size: 0.75rem;
       letter-spacing: 0.25em;
@@ -172,9 +135,6 @@
   </style>
 </head>
 <body>
-
-  <div class="full-bg"></div>
-  <div class="grid-lines"></div>
 
   <nav>
     <a href="index.html">Home</a>

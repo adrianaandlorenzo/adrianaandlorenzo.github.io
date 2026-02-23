@@ -9,7 +9,6 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --blue: #b8cad9;
       --blue-dark: #6a8aa5;
       --blue-bg: #c5d5e3;
       --text: #4a6478;
@@ -47,31 +46,31 @@
     }
     nav a:hover, nav a.active { color: #3a5f7a; }
 
-    /* HERO — castle photo full screen */
+    /* HERO — sculptures full width */
     .hero {
       position: relative;
       height: 100vh;
-      display: flex;
-      align-items: flex-end;
       overflow: hidden;
     }
-    .hero .bg {
-      position: absolute;
-      inset: 0;
-      background: url('images/page-2.jpg') center center / cover no-repeat;
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
     .hero .fade-bottom {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 55%;
+      height: 50%;
       background: linear-gradient(to top, var(--blue-bg) 0%, transparent 100%);
     }
     .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 0 4rem 0;
+      position: absolute;
+      bottom: 4rem;
       width: 100%;
       text-align: center;
+      z-index: 2;
       animation: fadeUp 1.2s ease both;
     }
     .section-label {
@@ -90,16 +89,12 @@
       letter-spacing: 0.04em;
     }
 
-    /* CONTENT BLOCKS */
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 4rem 2rem 3rem;
-    }
-
+    /* VENUE INFO */
     .venue-block {
       text-align: center;
-      margin-bottom: 4rem;
+      padding: 3rem 2rem 4rem;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .venue-block h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -118,11 +113,10 @@
       font-size: 0.85rem;
       color: var(--blue-dark);
       opacity: 0.8;
+      margin-bottom: 1.5rem;
     }
-
     .map-link {
       display: inline-block;
-      margin-top: 1.5rem;
       padding: 0.75rem 2.5rem;
       border: 1px solid var(--blue-dark);
       color: var(--blue-dark);
@@ -137,35 +131,40 @@
       color: white;
     }
 
-    /* SECOND PAGE — parking & stay */
-    .split-section {
+    /* SEA IMAGE — full width divider */
+    .sea-divider {
       position: relative;
-      min-height: 90vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      height: 60vh;
       overflow: hidden;
     }
-    .split-bg {
-      position: absolute;
-      inset: 0;
-      background: url('images/page-3.jpg') center center / cover no-repeat;
+    .sea-divider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
-    .split-overlay {
+    .sea-divider .fade-top {
       position: absolute;
-      inset: 0;
-      background: rgba(197, 213, 227, 0.82);
+      top: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, var(--blue-bg) 0%, transparent 100%);
     }
-    .split-content {
-      position: relative;
-      z-index: 2;
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .sea-divider .fade-bot {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--blue-bg) 0%, transparent 100%);
+    }
+
+    /* PARKING & STAY SECTION */
+    .info-section {
       max-width: 800px;
       margin: 0 auto;
-      padding: 6rem 2rem;
-      gap: 3rem;
-      width: 100%;
+      padding: 3rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
     }
     .info-block h3 {
       font-family: 'Cormorant Garamond', serif;
@@ -177,7 +176,6 @@
     }
     .info-block ul {
       list-style: none;
-      padding: 0;
     }
     .info-block ul li {
       font-size: 0.92rem;
@@ -186,22 +184,11 @@
       border-bottom: 1px solid rgba(106, 138, 165, 0.2);
     }
     .info-block ul li:last-child { border-bottom: none; }
-
     .info-block p {
       font-size: 0.92rem;
       line-height: 1.75;
       color: var(--text);
       margin-bottom: 0.8rem;
-    }
-    .parking-address {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--blue-dark);
-      text-decoration: none;
-      border-bottom: 1px solid var(--blue-dark);
-      padding-bottom: 2px;
     }
     .bam-badge {
       display: inline-block;
@@ -211,6 +198,17 @@
       letter-spacing: 0.25em;
       padding: 0.3rem 0.8rem;
       margin-top: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .parking-address {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--blue-dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue-dark);
+      padding-bottom: 2px;
     }
 
     @keyframes fadeUp {
@@ -231,7 +229,8 @@
     @media (max-width: 600px) {
       nav { gap: 1rem; padding: 0.9rem 1rem; }
       nav a { font-size: 0.6rem; }
-      .split-content { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+      .info-section { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sea-divider { height: 40vh; }
     }
   </style>
 </head>
@@ -245,8 +244,9 @@
     <a href="wedding-list.html">Wedding List</a>
   </nav>
 
+  <!-- SCULPTURES HERO -->
   <section class="hero">
-    <div class="bg"></div>
+    <img src="images/sculptures.jpg" alt="Castello Canevaro sculptures">
     <div class="fade-bottom"></div>
     <div class="hero-content">
       <p class="section-label">♦ Location</p>
@@ -254,41 +254,44 @@
     </div>
   </section>
 
-  <div class="content">
-    <div class="venue-block">
-      <h2>Zoagli, GE</h2>
-      <p class="coords">44°20′13.09″N &nbsp;·&nbsp; 9°16′01.53″E</p>
-      <p class="address">Entrance from: Via Duca Canevaro 7, 16035 Zoagli</p>
-      <a class="map-link" href="https://maps.google.com/?q=44.337525,9.267092" target="_blank" rel="noopener">
-        Open in Maps
+  <!-- VENUE INFO -->
+  <div class="venue-block">
+    <h2>Zoagli, GE</h2>
+    <p class="coords">44°20′13.09″N &nbsp;·&nbsp; 9°16′01.53″E</p>
+    <p class="address">Entrance from: Via Duca Canevaro 7, 16035 Zoagli</p>
+    <a class="map-link" href="https://maps.google.com/?q=44.337525,9.267092" target="_blank" rel="noopener">
+      Open in Maps
+    </a>
+  </div>
+
+  <!-- SEA IMAGE DIVIDER -->
+  <div class="sea-divider">
+    <img src="images/sea.jpg" alt="Ligurian Sea view">
+    <div class="fade-top"></div>
+    <div class="fade-bot"></div>
+  </div>
+
+  <!-- WHERE TO STAY & PARK -->
+  <div class="info-section">
+    <div class="info-block">
+      <h3>Where to Stay</h3>
+      <ul>
+        <li>Zoagli</li>
+        <li>Chiavari</li>
+        <li>Rapallo</li>
+        <li>Santa Margherita Ligure</li>
+      </ul>
+    </div>
+    <div class="info-block">
+      <h3>Where to Park</h3>
+      <p>Parking spaces have been reserved at <strong>Parcheggio Colombo</strong> from 16:00 to 02:00.</p>
+      <p>To collect your pre-paid ticket, please arrive between 16:00 and 17:00 and use the word:</p>
+      <div class="bam-badge">BAM</div>
+      <a class="parking-address" href="https://maps.google.com/?q=Via+C.+Colombo+56+Zoagli" target="_blank" rel="noopener">
+        Via C. Colombo, 56, 16035 Zoagli GE
       </a>
     </div>
   </div>
-
-  <section class="split-section">
-    <div class="split-bg"></div>
-    <div class="split-overlay"></div>
-    <div class="split-content">
-      <div class="info-block">
-        <h3>Where to Stay</h3>
-        <ul>
-          <li>Zoagli</li>
-          <li>Chiavari</li>
-          <li>Rapallo</li>
-          <li>Santa Margherita Ligure</li>
-        </ul>
-      </div>
-      <div class="info-block">
-        <h3>Where to Park</h3>
-        <p>Parking spaces have been reserved at <strong>Parcheggio Colombo</strong> from 16:00 to 02:00.</p>
-        <p>To collect your pre-paid ticket, please arrive at the parking between 16:00 and 17:00 and use the word:</p>
-        <div class="bam-badge">BAM</div>
-        <a class="parking-address" href="https://maps.google.com/?q=Via+C.+Colombo+56+Zoagli" target="_blank" rel="noopener">
-          Via C. Colombo, 56, 16035 Zoagli GE
-        </a>
-      </div>
-    </div>
-  </section>
 
   <footer>Adriana & Lorenzo · 6 June 2026</footer>
 

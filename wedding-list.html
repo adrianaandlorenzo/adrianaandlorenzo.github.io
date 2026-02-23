@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding List — Adriana & Lorenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #1d4a6e;
+      --teal-dark: #143650;
+      --teal-bg: #1a4060;
+      --teal-mid: #245580;
+      --cream: #c8dce8;
+      --cream-light: #deeaf4;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--teal-bg);
+      color: var(--cream);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.2rem 2rem;
+      background: rgba(26, 64, 96, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 220, 232, 0.12);
+    }
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(200, 220, 232, 0.6);
+      transition: color 0.3s;
+    }
+    nav a:hover, nav a.active { color: var(--cream-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero .bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/page-6.jpg') center center / cover no-repeat;
+    }
+    .hero .fade-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(to top, var(--teal-bg) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 5rem 0;
+      width: 100%;
+      text-align: center;
+      animation: fadeUp 1.2s ease both;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.5;
+      margin-bottom: 0.7rem;
+    }
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      color: var(--cream-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 4rem 2rem 8rem;
+      text-align: center;
+    }
+
+    .message {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.45rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--cream-light);
+      margin-bottom: 3.5rem;
+      opacity: 0.9;
+    }
+
+    .divider {
+      width: 50px;
+      height: 1px;
+      background: rgba(200, 220, 232, 0.3);
+      margin: 0 auto 3rem;
+    }
+
+    .bank-card {
+      background: rgba(200, 220, 232, 0.06);
+      border: 1px solid rgba(200, 220, 232, 0.15);
+      padding: 2.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .bank-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(200, 220, 232, 0.04);
+    }
+
+    .bank-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--cream-light);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    .bank-row {
+      margin-bottom: 1.2rem;
+    }
+    .bank-row label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(200, 220, 232, 0.45);
+      margin-bottom: 0.3rem;
+    }
+    .bank-row .value {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 200;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      display: inline-block;
+      margin-top: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(200, 220, 232, 0.25);
+      color: rgba(200, 220, 232, 0.5);
+      cursor: pointer;
+      background: none;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      border-color: var(--cream);
+      color: var(--cream);
+    }
+    .copy-btn.copied {
+      border-color: #7ab87a;
+      color: #7ab87a;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: rgba(200, 220, 232, 0.3);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      nav { gap: 1rem; padding: 0.9rem 1rem; }
+      nav a { font-size: 0.6rem; }
+      .bank-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="location.html">Location</a>
+    <a href="the-day.html">The Day</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="wedding-list.html" class="active">Wedding List</a>
+  </nav>
+
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="fade-bottom"></div>
+    <div class="hero-content">
+      <p class="section-label">🎁 Wedding List</p>
+      <h1>Honeymoon Fund</h1>
+    </div>
+  </section>
+
+  <div class="content">
+    <p class="message">"We have everything we need, except the adventure ahead. If you'd like to gift us something, a contribution to our honeymoon fund would make us truly happy."</p>
+    <div class="divider"></div>
+    <div class="bank-card">
+      <p class="bank-name">Lorenzo Scott Bertolini Agnoletto</p>
+
+      <div class="bank-row">
+        <label>IBAN</label>
+        <div class="value" id="iban">IT32E0305801604100571673632</div>
+        <button class="copy-btn" onclick="copyText('iban', this)">Copy IBAN</button>
+      </div>
+
+      <div class="bank-row">
+        <label>BIC SEPA</label>
+        <div class="value">MICSITM1XXX</div>
+      </div>
+
+      <div class="bank-row">
+        <label>BIC Extra SEPA</label>
+        <div class="value">MICSITM3XXX</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Adriana & Lorenzo · 6 June 2026</footer>
+
+  <script>
+    function copyText(id, btn) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy IBAN';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+
+  <script src="auth.js"></script>
+</body>
+</html>

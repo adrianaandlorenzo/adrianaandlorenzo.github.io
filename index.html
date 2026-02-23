@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adriana & Lorenzo — 6th June 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #b8cad9;
+      --blue-dark: #7a9ab5;
+      --blue-bg: #c5d5e3;
+      --green: #8aab72;
+      --green-bg: #8fad77;
+      --red: #8b0000;
+      --red-bg: #7a0000;
+      --teal: #1d4a6e;
+      --teal-bg: #1a4060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--blue-bg);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.2rem 2rem;
+      background: rgba(197, 213, 227, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122, 154, 181, 0.25);
+    }
+
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--blue-dark);
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #3a5f7a; }
+
+    /* HERO */
+    .page-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .page-hero .bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/page-1.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    .page-hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(197, 213, 227, 0.15);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--blue-dark);
+      padding: 2rem;
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .hero-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text .date {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--blue-dark);
+      opacity: 0.6;
+      animation: fadeUp 2s 0.8s ease both;
+    }
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-hint .arrow {
+      width: 1px;
+      height: 40px;
+      background: var(--blue-dark);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* SECTION CARDS */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem 5rem;
+    }
+
+    .section-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 2px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+    .section-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+    }
+
+    .section-card .card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+    .section-card:hover .card-bg { transform: scale(1.04); }
+
+    .section-card .card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 100%);
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-card.wide {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.6; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--blue-dark);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 600px) {
+      nav { gap: 1.2rem; padding: 1rem; }
+      nav a { font-size: 0.62rem; }
+      .sections-grid { grid-template-columns: 1fr; padding: 4rem 1.2rem 3rem; }
+      .section-card.wide { grid-column: span 1; aspect-ratio: 3/4; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="location.html">Location</a>
+    <a href="the-day.html">The Day</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="wedding-list.html">Wedding List</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="bg"></div>
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Adriana<br>&amp; Lorenzo</h1>
+      <p class="date">6th of June 2026</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <div class="sections-grid">
+    <a href="location.html" class="section-card">
+      <div class="card-bg" style="background-image: url('images/page-2.jpg')"></div>
+      <div class="card-label">Location</div>
+    </a>
+    <a href="the-day.html" class="section-card">
+      <div class="card-bg" style="background-image: url('images/page-4.jpg')"></div>
+      <div class="card-label">The Day</div>
+    </a>
+    <a href="rsvp.html" class="section-card wide">
+      <div class="card-bg" style="background-image: url('images/page-5.jpg'); background-position: center 30%;"></div>
+      <div class="card-label">RSVP — by 6th May 2026</div>
+    </a>
+    <a href="wedding-list.html" class="section-card wide">
+      <div class="card-bg" style="background-image: url('images/page-6.jpg')"></div>
+      <div class="card-label">Wedding List</div>
+    </a>
+  </div>
+
+  <footer>Castello Canevaro · Zoagli, GE · 6 June 2026</footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>

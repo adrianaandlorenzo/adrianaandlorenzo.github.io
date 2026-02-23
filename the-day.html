@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Day — Adriana & Lorenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #8aab72;
+      --green-dark: #4a7a35;
+      --green-bg: #8fad77;
+      --green-mid: #7a9e65;
+      --text: #2d4a1e;
+      --text-light: #4a6a38;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--green-bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.2rem 2rem;
+      background: rgba(143, 173, 119, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74, 122, 53, 0.2);
+    }
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+    nav a:hover, nav a.active { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero .bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/page-4.jpg') center center / cover no-repeat;
+    }
+    .hero .fade-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to top, var(--green-bg) 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 4.5rem 0;
+      width: 100%;
+      text-align: center;
+      animation: fadeUp 1.2s ease both;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      opacity: 0.75;
+      margin-bottom: 0.6rem;
+    }
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .block h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    /* SCHEDULE */
+    .schedule-list {
+      list-style: none;
+    }
+    .schedule-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(45, 74, 30, 0.15);
+    }
+    .schedule-list li:last-child { border-bottom: none; }
+    .schedule-list .time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      min-width: 3.5rem;
+      flex-shrink: 0;
+    }
+    .schedule-list .event {
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      color: var(--text-light);
+      text-transform: uppercase;
+    }
+
+    /* DRESSCODE */
+    .dress-code {
+      color: var(--text);
+    }
+    .dress-main {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+    .dress-tip {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-light);
+      border-left: 2px solid rgba(45, 74, 30, 0.25);
+      padding-left: 1rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-light);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      nav { gap: 1rem; padding: 0.9rem 1rem; }
+      nav a { font-size: 0.6rem; }
+      .content { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="location.html">Location</a>
+    <a href="the-day.html" class="active">The Day</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="wedding-list.html">Wedding List</a>
+  </nav>
+
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="fade-bottom"></div>
+    <div class="hero-content">
+      <p class="section-label">📅 The Day</p>
+      <h1>6th June 2026</h1>
+    </div>
+  </section>
+
+  <div class="content">
+    <div class="block">
+      <h2>Schedule</h2>
+      <ul class="schedule-list">
+        <li>
+          <span class="time">16:00</span>
+          <span class="event">Welcome Drink</span>
+        </li>
+        <li>
+          <span class="time">17:30</span>
+          <span class="event">Ceremony</span>
+        </li>
+        <li>
+          <span class="time">18:00</span>
+          <span class="event">Aperitivo</span>
+        </li>
+        <li>
+          <span class="time">20:30</span>
+          <span class="event">Dinner</span>
+        </li>
+        <li>
+          <span class="time">23:00</span>
+          <span class="event">Dancing</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>Dresscode</h2>
+      <div class="dress-code">
+        <p class="dress-main">Abito scuro / Elegant</p>
+        <p class="dress-tip">Our venue has a beautiful garden with gravel paths, so we recommend comfortable shoes. If you prefer heels, wider or block heels will serve you best!</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>Adriana & Lorenzo · 6 June 2026</footer>
+
+  <script src="auth.js"></script>
+</body>
+</html>

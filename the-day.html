@@ -85,19 +85,30 @@
       opacity: 0.75;
       margin-bottom: 0.6rem;
     }
-    .hero-content h1 {
+    .hero-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .hero-title h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-size: clamp(3rem, 8vw, 5.5rem);
       color: var(--text);
       letter-spacing: 0.05em;
     }
+    .hero-title img {
+      height: clamp(2.5rem, 6vw, 4.5rem);
+      width: auto;
+      opacity: 0.85;
+    }
 
     /* CONTENT */
     .content {
       max-width: 680px;
       margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+      padding: 4rem 2rem 3rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -114,9 +125,7 @@
     }
 
     /* SCHEDULE */
-    .schedule-list {
-      list-style: none;
-    }
+    .schedule-list { list-style: none; }
     .schedule-list li {
       display: flex;
       align-items: baseline;
@@ -140,9 +149,7 @@
     }
 
     /* DRESSCODE */
-    .dress-code {
-      color: var(--text);
-    }
+    .dress-code { color: var(--text); }
     .dress-main {
       font-size: 1.1rem;
       font-weight: 400;
@@ -154,6 +161,17 @@
       color: var(--text-light);
       border-left: 2px solid rgba(45, 74, 30, 0.25);
       padding-left: 1rem;
+    }
+
+    /* SHOES */
+    .shoes-wrap {
+      text-align: center;
+      padding: 1rem 2rem 4rem;
+    }
+    .shoes-wrap img {
+      max-width: 300px;
+      width: 50%;
+      opacity: 0.9;
     }
 
     @keyframes fadeUp {
@@ -174,7 +192,8 @@
     @media (max-width: 600px) {
       nav { gap: 1rem; padding: 0.9rem 1rem; }
       nav a { font-size: 0.6rem; }
-      .content { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 4rem; }
+      .content { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+      .shoes-wrap img { width: 70%; }
     }
   </style>
 </head>
@@ -192,8 +211,11 @@
     <div class="bg"></div>
     <div class="fade-bottom"></div>
     <div class="hero-content">
-      <p class="section-label">📅 The Day</p>
-      <h1>6th June 2026</h1>
+      <p class="section-label">The Day</p>
+      <div class="hero-title">
+        <img src="images/daycup.jpg" alt="wine glass illustration">
+        <h1>6th June 2026</h1>
+      </div>
     </div>
   </section>
 
@@ -201,26 +223,11 @@
     <div class="block">
       <h2>Schedule</h2>
       <ul class="schedule-list">
-        <li>
-          <span class="time">16:00</span>
-          <span class="event">Welcome Drink</span>
-        </li>
-        <li>
-          <span class="time">17:30</span>
-          <span class="event">Ceremony</span>
-        </li>
-        <li>
-          <span class="time">18:00</span>
-          <span class="event">Aperitivo</span>
-        </li>
-        <li>
-          <span class="time">20:30</span>
-          <span class="event">Dinner</span>
-        </li>
-        <li>
-          <span class="time">23:00</span>
-          <span class="event">Dancing</span>
-        </li>
+        <li><span class="time">16:00</span><span class="event">Welcome Drink</span></li>
+        <li><span class="time">17:30</span><span class="event">Ceremony</span></li>
+        <li><span class="time">18:00</span><span class="event">Aperitivo</span></li>
+        <li><span class="time">20:30</span><span class="event">Dinner</span></li>
+        <li><span class="time">23:00</span><span class="event">Dancing</span></li>
       </ul>
     </div>
 
@@ -231,6 +238,10 @@
         <p class="dress-tip">Our venue has a beautiful garden with gravel paths, so we recommend comfortable shoes. If you prefer heels, wider or block heels will serve you best!</p>
       </div>
     </div>
+  </div>
+
+  <div class="shoes-wrap">
+    <img src="images/daysh.jpg" alt="shoes illustration">
   </div>
 
   <footer>Adriana & Lorenzo · 6 June 2026</footer>

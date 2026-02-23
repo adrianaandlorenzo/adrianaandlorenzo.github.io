@@ -9,10 +9,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --teal: #1d4a6e;
-      --teal-dark: #143650;
-      --teal-bg: #1a4060;
-      --teal-mid: #245580;
+      --teal: #074E7A;
+      --teal-dark: #053d61;
       --cream: #c8dce8;
       --cream-light: #deeaf4;
     }
@@ -20,10 +18,11 @@
     body {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      background: var(--teal-bg);
+      background: var(--teal);
       color: var(--cream);
       overflow-x: hidden;
       min-height: 100vh;
+      position: relative;
     }
 
     nav {
@@ -34,7 +33,7 @@
       justify-content: center;
       gap: 2.5rem;
       padding: 1.2rem 2rem;
-      background: rgba(26, 64, 96, 0.9);
+      background: rgba(7, 78, 122, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(200, 220, 232, 0.12);
     }
@@ -50,65 +49,58 @@
     }
     nav a:hover, nav a.active { color: var(--cream-light); }
 
-    /* HERO */
-    .hero {
+    /* PALM — bottom left fixed decoration */
+    .palm {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: clamp(200px, 30vw, 380px);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* PAGE CONTENT */
+    .page {
       position: relative;
-      height: 100vh;
+      z-index: 1;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-end;
-      overflow: hidden;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 6rem;
     }
-    .hero .bg {
-      position: absolute;
-      inset: 0;
-      background: url('images/page-6.jpg') center center / cover no-repeat;
-    }
-    .hero .fade-bottom {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 55%;
-      background: linear-gradient(to top, var(--teal-bg) 0%, transparent 100%);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 0 5rem 0;
-      width: 100%;
-      text-align: center;
-      animation: fadeUp 1.2s ease both;
-    }
+
     .section-label {
       font-size: 0.7rem;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--cream);
       opacity: 0.5;
-      margin-bottom: 0.7rem;
+      margin-bottom: 1rem;
     }
-    .hero-content h1 {
+
+    h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-size: clamp(3rem, 8vw, 5.5rem);
       color: var(--cream-light);
       letter-spacing: 0.04em;
-    }
-
-    /* CONTENT */
-    .content {
-      max-width: 620px;
-      margin: 0 auto;
-      padding: 4rem 2rem 8rem;
+      margin-bottom: 3rem;
       text-align: center;
     }
 
     .message {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.45rem;
+      font-size: 1.3rem;
       font-weight: 300;
       line-height: 1.65;
       color: var(--cream-light);
-      margin-bottom: 3.5rem;
+      max-width: 560px;
+      text-align: center;
+      margin-bottom: 3rem;
       opacity: 0.9;
     }
 
@@ -124,6 +116,8 @@
       border: 1px solid rgba(200, 220, 232, 0.15);
       padding: 2.5rem;
       text-align: left;
+      max-width: 500px;
+      width: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -144,9 +138,7 @@
       letter-spacing: 0.03em;
     }
 
-    .bank-row {
-      margin-bottom: 1.2rem;
-    }
+    .bank-row { margin-bottom: 1.2rem; }
     .bank-row label {
       display: block;
       font-size: 0.65rem;
@@ -177,19 +169,8 @@
       background: none;
       transition: all 0.2s;
     }
-    .copy-btn:hover {
-      border-color: var(--cream);
-      color: var(--cream);
-    }
-    .copy-btn.copied {
-      border-color: #7ab87a;
-      color: #7ab87a;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(25px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .copy-btn:hover { border-color: var(--cream); color: var(--cream); }
+    .copy-btn.copied { border-color: #7ab87a; color: #7ab87a; }
 
     footer {
       text-align: center;
@@ -198,16 +179,21 @@
       font-size: 0.72rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 600px) {
       nav { gap: 1rem; padding: 0.9rem 1rem; }
       nav a { font-size: 0.6rem; }
       .bank-card { padding: 1.5rem; }
+      .palm { width: 55vw; }
     }
   </style>
 </head>
 <body>
+
+  <img class="palm" src="images/palm.png" alt="palm illustration">
 
   <nav>
     <a href="index.html">Home</a>
@@ -217,18 +203,13 @@
     <a href="wedding-list.html" class="active">Wedding List</a>
   </nav>
 
-  <section class="hero">
-    <div class="bg"></div>
-    <div class="fade-bottom"></div>
-    <div class="hero-content">
-      <p class="section-label">🎁 Wedding List</p>
-      <h1>Honeymoon Fund</h1>
-    </div>
-  </section>
+  <div class="page">
+    <p class="section-label">🎁 Wedding List</p>
+    <h1>Wedding List</h1>
 
-  <div class="content">
     <p class="message">"We have everything we need, except the adventure ahead. If you'd like to gift us something, a contribution to our honeymoon fund would make us truly happy."</p>
     <div class="divider"></div>
+
     <div class="bank-card">
       <p class="bank-name">Lorenzo Scott Bertolini Agnoletto</p>
 
@@ -265,7 +246,6 @@
       });
     }
   </script>
-
   <script src="auth.js"></script>
 </body>
 </html>
